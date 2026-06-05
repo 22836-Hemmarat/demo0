@@ -3,168 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ประวัติส่วนตัว - ด.ช.เหมรัศมิ์ เนตรศิลป์</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <title>โปรไฟล์นักเรียน - ด.ช.เหมรัศมิ์ เนตรศิลป์</title>
     <style>
+        /* Import Google Fonts for beautiful Thai typography */
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Sarabun:wght@400;500;700&display=swap');
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
         }
 
         body {
-            background-color: #f0f4f8;
+            font-family: 'Sarabun', sans-serif;
+            background-color: #eef2f7;
+            color: #334155;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #333;
+            padding: 20px;
         }
 
+        /* Profile Card Container (Optimized for A4 Aspect Ratio) */
         .profile-card {
+            width: 210mm;
+            min-height: 297mm;
             background: #ffffff;
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
             overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            text-align: center;
-            padding: 40px 20px 20px;
+            display: flex;
+            flex-direction: column;
             position: relative;
         }
 
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            background-color: #ffffff;
-            color: #2a5298;
+        /* Header Section with Modern Blue Gradient */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 40px 50px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            border-bottom: 5px solid #60a5fa;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 80%);
+            pointer-events: none;
+        }
+
+        /* Avatar Container */
+        .avatar-container {
+            width: 140px;
+            height: 140px;
+            background: #ffffff;
             border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3rem;
-            margin: 0 auto 15px;
-            border: 4px solid #e2e8f0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
         }
 
-        .card-header h1 {
-            font-size: 1.4rem;
+        .avatar-icon {
+            width: 100%;
+            height: 100%;
+            color: #3b82f6;
+        }
+
+        /* Student Name & Title Info */
+        .header-info {
+            flex-grow: 1;
+        }
+
+        .school-tag {
+            font-family: 'Chakra Petch', sans-serif;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .student-name {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
             margin-bottom: 5px;
         }
 
-        .card-header p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 1.05rem;
-        }
-
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-
-        .icon-box {
-            width: 40px;
-            height: 40px;
-            background-color: #ebf4ff;
-            color: #2a5298;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 15px;
-            font-size: 1.2rem;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .info-list li:hover .icon-box {
-            background-color: #2a5298;
-            color: #ffffff;
-        }
-
-        .label {
+        .student-nickname {
+            font-size: 20px;
+            color: #bfdbfe;
             font-weight: 500;
-            color: #64748b;
-            margin-right: 10px;
+            margin-bottom: 10px;
         }
 
-        .value {
-            font-weight: 400;
+        .grade-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #ef4444;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* Motto Section */
+        .motto-container {
+            background: #f0f7ff;
+            border-left: 5px solid #3b82f6;
+            margin: 30px 50px 15px 50px;
+            padding: 20px 25px;
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .motto-icon {
+            font-size: 28px;
+            color: #3b82f6;
+            line-height: 1;
+        }
+
+        .motto-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        /* Main Content Layout (Table-based layout inside block for print safety) */
+        .content-layout {
+            display: table;
+            width: calc(100% - 100px);
+            margin: 15px 50px 40px 50px;
+            border-spacing: 25px 0;
+        }
+
+        .content-column {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+        }
+
+        /* Section Block Style */
+        .section-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .section-title {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title svg {
+            width: 20px;
+            height: 20px;
+            fill: #3b82f6;
+        }
+
+        /* Info Item Row Layout */
+        .info-item {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            width: 110px;
+            font-weight: 700;
+            color: #64748b;
+            flex-shrink: 0;
+        }
+
+        .info-value {
             color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* Tags / Pills Styling */
+        .pills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pill.accent {
+            background-color: #f0fdf4;
+            color: #16a34a;
+            border-color: #bbf7d0;
+        }
+
+        .pill.danger {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border-color: #fecaca;
+        }
+        
+        .pill.dark-blue {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            border-color: #1e3a8a;
+        }
+
+        /* Footer Decoration */
+        .footer-note {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        /* A4 Printing Optimization CSS */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .profile-card {
+                box-shadow: none;
+                border-radius: 0;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                page-break-inside: avoid;
+            }
+            /* Ensure gradients render correctly when printing */
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .pill, .school-tag, .grade-badge, .motto-container, .section-box {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="profile-card">
-        <div class="card-header">
-            <div class="profile-pic">
-                <i class="fa-solid fa-user-graduate"></i>
+        <!-- Header Section -->
+        <div class="header">
+            <div class="avatar-container">
+                <!-- Inline SVG Boy Student Avatar for self-contained format -->
+                <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 frame 2 12 2ZM12 6C13.93 6 15.5 7.57 15.5 9.5C15.5 11.43 13.93 13 12 13C10.07 13 8.5 11.43 8.5 9.5C8.5 7.57 10.07 6 12 6ZM12 20C9.08 20 6.54 18.5 5.09 16.23C5.13 13.94 9.7 12.7 12 12.7C14.29 12.7 18.87 13.94 18.91 16.23C17.46 18.5 14.92 20 12 20Z" fill="currentColor"/>
+                </svg>
             </div>
-            <h1>ด.ช.เหมรัศมิ์ เนตรศิลป์</h1>
-            <p>(น้องเซเว่น)</p>
+            <div class="header-info">
+                <span class="school-tag">โรงเรียนจอมทอง</span>
+                <h1 class="student-name">ด.ช.เหมรัศมิ์ เนตรศิลป์</h1>
+                <div class="student-nickname">ชื่อเล่น: <strong>เซเว่น</strong></div>
+                <span class="grade-badge">ชั้นมัธยมศึกษาปีที่ 3</span>
+            </div>
         </div>
-        
-        <div class="card-body">
-            <ul class="info-list">
-                <li>
-                    <div class="icon-box"><i class="fa-solid fa-cake-candles"></i></div>
-                    <span class="label">วันเกิด:</span> 
-                    <span class="value">18 พฤศจิกายน 2554</span>
-                </li>
-                <li>
-                    <div class="icon-box"><i class="fa-solid fa-utensils"></i></div>
-                    <span class="label">อาหารที่ชอบ:</span> 
-                    <span class="value">กะเพราหมูสับไข่ดาว</span>
-                </li>
-                <li>
-                    <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
-                    <span class="label">สีที่ชอบ:</span> 
-                    <span class="value">สีน้ำเงิน</span>
-                </li>
-                <li>
-                    <div class="icon-box"><i class="fa-solid fa-book"></i></div>
-                    <span class="label">วิชาที่ชอบ:</span> 
-                    <span class="value">วิชาคอมพิวเตอร์ และ พละศึกษา</span>
-                </li>
-                <li>
-                    <div class="icon-box"><i class="fa-solid fa-user-group"></i></div>
-                    <span class="label">เพื่อนสนิท:</span> 
-                    <span class="value">น้องจูน</span>
-                </li>
-            </ul>
+
+        <!-- Motto Section -->
+        <div class="motto-container">
+            <span class="motto-icon">“</span>
+            <div class="motto-text">ความล้มเหลวคือบทเรียน ไม่ใช่บทสรุป</div>
+        </div>
+
+        <!-- Main Content 2-Column Layout -->
+        <div class="content-layout">
+            
+            <!-- Left Column: Personal Info & Preferences -->
+            <div class="content-column">
+                
+                <!-- ข้อมูลทั่วไป -->
+                <div class="section-box">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        ข้อมูลทั่วไป
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">วันเกิด :</div>
+                        <div class="info-value">18 พฤศจิกายน 2554 (18/11/2011)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">เพศ :</div>
+                        <div class="info-value">ชาย</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">กรุ๊ปเลือด :</div>
+                        <div class="info-value">A</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ราศี :</div>
+                        <div class="info-value">พิจิก</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ภูมิลำเนา :</div>
+                        <div class="info-value">จังหวัดลำพูน</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ส่วนสูง :</div>
+                        <div class="info-value">168 ซ.ม.</div>
+                    </div>
+                </div>
+
+                <!-- ไลฟ์สไตล์และความชอบ -->
+                <div class="section-box">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        ไลฟ์สไตล์และความชอบ
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">เพื่อนสนิท :</div>
+                        <div class="info-value">น้องจูน</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">อาหารโปรด :</div>
+                        <div class="info-value">กะเพราหมูสับ</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">งานอดิเรก :</div>
+                        <div class="info-value">เล่นเกม</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">เพลงที่ชอบ :</div>
+                        <div class="info-value">แนวร็อค (Rock)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">อนิเมะ/ซีรีส์ :</div>
+                        <div class="info-value">ลูฟี่ (One Piece)</div>
+                    </div>
+                    <div class="info-item" style="align-items: center;">
+                        <div class="info-label">สีที่ชอบ :</div>
+                        <div class="info-value pills-container">
+                            <span class="pill dark-blue">น้ำเงิน</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Academic, Activities & Skills -->
+            <div class="content-column">
+                
+                <!-- ด้านการเรียนและกิจกรรม -->
+                <div class="section-box">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.49 18.25L12 21.8l6.51-3.55V14.3L12 17.8l-6.51-3.5v3.95z"/></svg>
+                        การเรียนและกิจกรรม
+                    </div>
+                    <div class="info-item" style="align-items: center;">
+                        <div class="info-label">วิชาที่ชอบ :</div>
+                        <div class="info-value pills-container">
+                            <span class="pill accent">พละศึกษา</span>
+                        </div>
+                    </div>
+                    <div class="info-item" style="align-items: center;">
+                        <div class="info-label">วิชาที่ยาก :</div>
+                        <div class="info-value pills-container">
+                            <span class="pill danger">คอมพิวเตอร์</span>
+                        </div>
+                    </div>
+                    <div class="info-item" style="margin-top: 8px;">
+                        <div class="info-label">ชมรม/กิจกรรม:</div>
+                        <div class="info-value">ชมรมหุ่นยนต์</div>
+                    </div>
+                </div>
+
+                <!-- ความฝันและเป้าหมาย -->
+                <div class="section-box">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-1.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+                        ความฝันและอนาคต
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">อาชีพที่ฝัน :</div>
+                        <div class="info-value" style="font-size: 16px; color: #2563eb; font-weight: 700;">Digital Marketing</div>
+                    </div>
+                </div>
+
+                <!-- กีฬาและทักษะความสามารถ -->
+                <div class="section-box">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        กีฬาและทักษะความสามารถ
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">กีฬาที่เล่น :</div>
+                        <div class="info-value">ฟุตบอล</div>
+                    </div>
+                    <div class="info-item" style="display: block; margin-top: 10px;">
+                        <div class="info-label" style="width: 100%; margin-bottom: 8px;">ทักษะความสามารถ :</div>
+                        <div class="pills-container">
+                            <span class="pill" style="background-color: #3b82f6; color: white; border: none; padding: 8px 16px; font-size: 15px;">⚽ เดาะฟุตบอล</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            Student Profile Card • โรงเรียนจอมทอง
         </div>
     </div>
 
