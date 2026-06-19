@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โปรไฟล์นักเรียน - ด.ช.เหมรัศมิ์ เนตรศิลป์</title>
+    <title>โปรไฟล์นักเรียน - ด.ช.เหมรัศมิ์ เนตรศิลป์ (Chelsea Theme)</title>
     <style>
         /* Import Google Fonts for beautiful Thai typography */
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Sarabun:wght@400;500;700&display=swap');
@@ -16,8 +16,8 @@
 
         body {
             font-family: 'Sarabun', sans-serif;
-            background-color: #eef2f7;
-            color: #334155;
+            background-color: #f1f5f9; /* Light gray background */
+            color: #1e293b;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,129 +31,169 @@
             min-height: 297mm;
             background: #ffffff;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(30, 41, 59, 0.1);
+            box-shadow: 0 15px 35px rgba(3, 70, 148, 0.15); /* Chelsea blue shadow tint */
             overflow: hidden;
             display: flex;
             flex-direction: column;
             position: relative;
+            border: 2px solid #034694; /* Chelsea Blue border */
         }
 
-        /* Header Section with Modern Blue Gradient */
+        /* Header Section with Chelsea Royal Blue */
         .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: #034694; /* Chelsea Royal Blue */
             color: #ffffff;
             padding: 40px 50px;
             display: flex;
             align-items: center;
             gap: 35px;
-            border-bottom: 5px solid #60a5fa;
+            border-bottom: 6px solid #dba111; /* Chelsea Gold accent */
             position: relative;
+            overflow: hidden;
         }
 
+        /* Diagonal subtle stripes in background */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.05) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            pointer-events: none;
+        }
+        
+        /* Subtle glow effect */
         .header::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 80%);
+            bottom: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(219, 161, 17, 0.2) 0%, transparent 70%); /* Gold glow */
             pointer-events: none;
         }
 
         /* Avatar Container */
         .avatar-container {
-            width: 140px;
-            height: 140px;
+            width: 145px;
+            height: 145px;
             background: #ffffff;
             border-radius: 50%;
-            padding: 5px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            padding: 6px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
+            border: 3px solid #dba111; /* Chelsea Gold ring */
+            position: relative;
+            z-index: 1;
         }
 
-        /* เพิ่มคลาสสำหรับจัดระเบียบรูปภาพโปรไฟล์ */
         .avatar-img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover; /* ทำให้รูปภาพเต็มกรอบพอดี ไม่เบี้ยว */
+            object-fit: cover;
         }
 
         /* Student Name & Title Info */
         .header-info {
             flex-grow: 1;
+            position: relative;
+            z-index: 1;
         }
 
         .school-tag {
             font-family: 'Chakra Petch', sans-serif;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             padding: 6px 14px;
-            border-radius: 20px;
+            border-radius: 4px; /* Squarish for sporty look */
             font-size: 14px;
             font-weight: 600;
             display: inline-block;
             margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+            border-left: 3px solid #dba111; /* Gold left border */
         }
 
         .student-name {
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .student-nickname {
             font-size: 20px;
-            color: #bfdbfe;
+            color: #e2e8f0;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .grade-badge {
             display: inline-flex;
             align-items: center;
-            background: #ef4444;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 14px;
+            background: #dba111; /* Chelsea Gold */
+            color: #034694; /* Blue text */
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 15px;
             font-weight: 700;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         /* Motto Section */
         .motto-container {
-            background: #f0f7ff;
-            border-left: 5px solid #3b82f6;
+            background: #f8fafc;
+            border-left: 6px solid #034694; /* Chelsea Blue */
             margin: 30px 50px 15px 50px;
             padding: 20px 25px;
-            border-radius: 0 12px 12px 0;
+            border-radius: 0 8px 8px 0;
             display: flex;
             align-items: center;
             gap: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .motto-container::before {
+            content: 'CFC';
+            position: absolute;
+            right: 20px;
+            font-size: 40px;
+            font-weight: 800;
+            color: rgba(3, 70, 148, 0.05);
+            font-family: 'Chakra Petch', sans-serif;
         }
 
         .motto-icon {
-            font-size: 28px;
-            color: #3b82f6;
+            font-size: 32px;
+            color: #dba111; /* Gold quote */
             line-height: 1;
+            font-family: Georgia, serif;
         }
 
         .motto-text {
-            font-size: 16px;
+            font-size: 17px;
             font-style: italic;
-            color: #1e3a8a;
+            color: #034694; /* Blue text */
             font-weight: 600;
         }
 
-        /* Main Content Layout (Table-based layout inside block for print safety) */
+        /* Main Content Layout */
         .content-layout {
             display: table;
             width: calc(100% - 100px);
@@ -171,29 +211,32 @@
         .section-box {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
+            border-top: 4px solid #034694; /* Top border accent */
+            border-radius: 8px;
             padding: 24px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            position: relative;
         }
 
         .section-title {
             font-family: 'Chakra Petch', sans-serif;
             font-size: 18px;
             font-weight: 700;
-            color: #1e3a8a;
+            color: #034694; /* Chelsea Blue */
             margin-bottom: 18px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px dashed #cbd5e1;
             display: flex;
             align-items: center;
             gap: 10px;
+            text-transform: uppercase;
         }
 
         .section-title svg {
-            width: 20px;
-            height: 20px;
-            fill: #3b82f6;
+            width: 22px;
+            height: 22px;
+            fill: #dba111; /* Gold icons */
         }
 
         /* Info Item Row Layout */
@@ -216,8 +259,8 @@
         }
 
         .info-value {
-            color: #1e293b;
-            font-weight: 500;
+            color: #0f172a;
+            font-weight: 600;
         }
 
         /* Tags / Pills Styling */
@@ -229,32 +272,45 @@
         }
 
         .pill {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             padding: 6px 14px;
-            background-color: #eff6ff;
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-            border-radius: 20px;
+            border-radius: 4px; /* Squarish */
             font-size: 14px;
             font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Chelsea specific pill colors */
+        .pill.chelsea-blue {
+            background-color: #034694;
+            color: #ffffff;
+            border: 1px solid #022d61;
+        }
+
+        .pill.chelsea-gold {
+            background-color: #dba111;
+            color: #034694;
+            border: 1px solid #b8860b;
+        }
+        
+        .pill.white-blue {
+            background-color: #ffffff;
+            color: #034694;
+            border: 1px solid #034694;
         }
 
         .pill.accent {
             background-color: #f0fdf4;
             color: #16a34a;
-            border-color: #bbf7d0;
+            border: 1px solid #bbf7d0;
         }
 
         .pill.danger {
             background-color: #fef2f2;
             color: #dc2626;
-            border-color: #fecaca;
-        }
-        
-        .pill.dark-blue {
-            background-color: #1e3a8a;
-            color: #ffffff;
-            border-color: #1e3a8a;
+            border: 1px solid #fecaca;
         }
 
         /* Footer Decoration */
@@ -262,10 +318,21 @@
             margin-top: auto;
             text-align: center;
             padding: 20px;
-            font-size: 12px;
-            color: #94a3b8;
-            border-top: 1px solid #f1f5f9;
+            font-size: 13px;
+            color: #64748b;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
             font-family: 'Chakra Petch', sans-serif;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-note::before, .footer-note::after {
+            content: '⚽';
+            font-size: 12px;
         }
 
         /* A4 Printing Optimization CSS */
@@ -281,13 +348,10 @@
                 height: 297mm;
                 margin: 0;
                 page-break-inside: avoid;
+                border: none;
             }
-            /* Ensure gradients render correctly when printing */
-            .header {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .pill, .school-tag, .grade-badge, .motto-container, .section-box {
+            /* Ensure gradients and colors render correctly when printing */
+            .header, .pill, .school-tag, .grade-badge, .motto-container, .section-box {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -299,7 +363,6 @@
         <!-- Header Section -->
         <div class="header">
             <div class="avatar-container">
-                <!-- นำรูปภาพมาใส่ในส่วนนี้แทน SVG -->
                 <img src="https://cdn.onefc.com/wp-content/uploads/sites/5/2024/06/OL68-Suablack-vs-Kiamran-Nabati-7-scaled.jpg" alt="รูปโปรไฟล์ ด.ช.เหมรัศมิ์" class="avatar-img">
             </div>
             <div class="header-info">
@@ -350,7 +413,11 @@
                     </div>
                     <div class="info-item">
                         <div class="info-label">ส่วนสูง :</div>
-                        <div class="info-value">168 ซ.ม.</div>
+                        <div class="info-value">170 ซ.ม.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ทีมโปรด :</div>
+                        <div class="info-value" style="color: #034694; font-weight: 700;">Chelsea FC 🦁</div>
                     </div>
                 </div>
 
@@ -370,7 +437,7 @@
                     </div>
                     <div class="info-item">
                         <div class="info-label">งานอดิเรก :</div>
-                        <div class="info-value">เล่นเกม</div>
+                        <div class="info-value">เล่นเกม, ดูบอลพรีเมียร์ลีก</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">เพลงที่ชอบ :</div>
@@ -383,7 +450,7 @@
                     <div class="info-item" style="align-items: center;">
                         <div class="info-label">สีที่ชอบ :</div>
                         <div class="info-value pills-container">
-                            <span class="pill dark-blue">น้ำเงิน</span>
+                            <span class="pill chelsea-blue">น้ำเงิน (Royal Blue)</span>
                         </div>
                     </div>
                 </div>
@@ -425,7 +492,7 @@
                     </div>
                     <div class="info-item">
                         <div class="info-label">อาชีพที่ฝัน :</div>
-                        <div class="info-value" style="font-size: 16px; color: #2563eb; font-weight: 700;">Digital Marketing</div>
+                        <div class="info-value" style="font-size: 16px; color: #034694; font-weight: 700;">Digital Marketing</div>
                     </div>
                 </div>
 
@@ -437,12 +504,13 @@
                     </div>
                     <div class="info-item">
                         <div class="info-label">กีฬาที่เล่น :</div>
-                        <div class="info-value">ฟุตบอล</div>
+                        <div class="info-value">ฟุตบอล (กองกลาง)</div>
                     </div>
                     <div class="info-item" style="display: block; margin-top: 10px;">
                         <div class="info-label" style="width: 100%; margin-bottom: 8px;">ทักษะความสามารถ :</div>
                         <div class="pills-container">
-                            <span class="pill" style="background-color: #3b82f6; color: white; border: none; padding: 8px 16px; font-size: 15px;">⚽ เดาะฟุตบอล</span>
+                            <span class="pill chelsea-blue">⚽ เดาะฟุตบอล</span>
+                            <span class="pill white-blue">👟 จ่ายบอลแม่นยำ</span>
                         </div>
                     </div>
                 </div>
